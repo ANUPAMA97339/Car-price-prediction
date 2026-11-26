@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.backend
+    container_name: gcpa-backend
+    environment:
+      - APP_ENV=production
+      - DATABASE_URL=sqlite:////data/car_prices.db
+      - CORS_ORIGINS=http://localhost:5173,http://localhost
+      - LOG_LEVEL=INFO
+    volumes:
+      - ../backend/artifacts:/app/artifacts
+      - backend-data:/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.frontend
+      args:
+        VITE_API_BASE_URL: ""
+    container_name: gcpa-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+volumes:
+  backend-data:

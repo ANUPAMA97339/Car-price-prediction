@@ -1,0 +1,26 @@
+:root {
+  --bg-primary: #0b1120;
+  --bg-secondary: #111827;
+  --card: #172033;
+  --accent: #3b82f6;
+  --accent-alt: #06b6d4;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(59, 130, 246, 0.35);
+  --chart-grid: rgba(148, 163, 184, 0.16);
+}
+
+html.light {
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #ffffff;
+  --card: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-hover: rgba(59, 130, 246, 0.4);
+  --chart-grid: rgba(71, 85, 105, 0.2);
+}

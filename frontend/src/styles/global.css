@@ -1,0 +1,80 @@
+@import './variables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; padding: 0; }
+html { color-scheme: dark; }
+html.light { color-scheme: light; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+@layer components {
+  .card {
+    @apply bg-card rounded-xl border p-6;
+    border-color: var(--border);
+    transition: border-color 0.2s ease;
+  }
+  .card:hover { border-color: var(--border-hover); }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent text-white font-medium text-sm hover:bg-accent/90 transition-colors;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-card text-textMain border font-medium text-sm hover:border-accent/50 transition-colors;
+    border-color: var(--border);
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-danger text-white font-medium text-sm hover:bg-danger/90 transition-colors;
+  }
+
+  .input-field {
+    @apply w-full bg-bgSecondary text-textMain text-sm px-3.5 py-2.5 rounded-lg border outline-none focus:border-accent transition-colors;
+    border-color: var(--border);
+  }
+  .label-field {
+    @apply block text-xs font-medium text-textSub mb-1.5 uppercase tracking-wide;
+  }
+
+  .page-title { @apply text-2xl font-bold text-textMain mb-1; }
+  .page-subtitle { @apply text-sm text-textSub mb-6; }
+
+  .section-title { @apply text-lg font-semibold text-textMain mb-4; }
+
+  .skeleton {
+    @apply animate-pulse rounded-lg;
+    background-color: var(--border);
+  }
+
+  .theme-border { border-color: var(--border); }
+  .theme-surface-dim { background-color: var(--border); }
+  .theme-divider > :not(:last-child) { border-color: var(--border); }
+}
+/* Slim scrollbar for the sidebar only */
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--card); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+::selection { background: var(--accent); color: #fff; }
